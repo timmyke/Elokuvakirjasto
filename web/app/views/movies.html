@@ -1,0 +1,11 @@
+<div ng-controller="MoviesController">
+    <a href="#/movies/new">Uusi</a>
+    <ul ng-repeat="movie in movies">
+    <li>
+        <strong>{{movie.title}}</strong> 
+        <p>
+            {{movie.description}}
+        </p>
+    </li>
+</ul>
+</div>
