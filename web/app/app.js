@@ -13,5 +13,8 @@ ImApp.config(function ($routeProvider) {
             }).when('/movies/new', {
                 controller: 'NewMovieController',
                 templateUrl: 'app/views/new_movie.html'
+            }).when('/movies/:id', {
+                controller: 'EditController',
+                templateUrl: 'app/views/new_movie.html'
             });
 });

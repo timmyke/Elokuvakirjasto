@@ -2,7 +2,7 @@
     <a href="#/movies/new">Uusi</a>
     <ul ng-repeat="movie in movies">
     <li>
-        <strong>{{movie.title}}</strong> 
+        <strong><a ng-href="#/movies/{{movie.$id}}" >{{movie.title}}</a></strong> 
         <p>
             {{movie.description}}
         </p>

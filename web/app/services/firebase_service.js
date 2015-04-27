@@ -6,20 +6,26 @@ ImApp.service('FirebaseService', function ($firebase) {
     this.add = function (movie) {
         movies.$add(movie);
     }
-    
-    this.remove = function(movie) {
+
+    this.remove = function (movie) {
         movies.$remove(movie);
     }
-    
-    this.removeAll = function() {
+
+    this.removeAll = function () {
         moviesFirebaseRef.set([]);
     }
-    
-    this.getMovies= function () {
+
+    this.getMovies = function () {
         return movies;
     }
-    
-    this.save = function(movie) {
+
+    this.getMovie = function (key, done) {
+        movies.$loaded(function () {
+            done(movies.$getRecord(key));
+        });
+    }
+
+    this.save = function (movie) {
         movies.$save(movie);
     }
 });
