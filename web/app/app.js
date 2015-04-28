@@ -19,5 +19,12 @@ ImApp.config(function ($routeProvider) {
             }).when('/movies/:id/edit', {
                 controller: 'EditController',
                 templateUrl: 'app/views/edit.html'
+            }).when('/find', {
+                controller: 'ApiController',
+                templateUrl: 'app/views/find.html'
             });
 });
+
+ImApp.config(['$httpProvider', function($httpProvider) {
+  delete $httpProvider.defaults.headers.common["X-Requested-With"]
+}]);

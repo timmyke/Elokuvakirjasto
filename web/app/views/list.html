@@ -1,5 +1,4 @@
 <div ng-controller="ListController">
-    <a href="#/movies/new">Uusi</a>
     <ul ng-repeat="movie in movies">
     <li>
         <strong><a ng-href="#/movies/{{movie.$id}}" >{{movie.title}}</a> <a href ng-click="delete(movie)">Poista</a></strong> 
