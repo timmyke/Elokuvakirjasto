@@ -1,5 +1,5 @@
 <div ng-controller="ApiController">
-    
+
     <h2>Filtterit</h2>
     <p>
         <label>Nimi</label>
@@ -10,11 +10,15 @@
         <input type="text" ng-model="search.year" placeholder="Julkaisuvuosi">
     </p>
     <button ng-click="doSearch()">Hae</button>
-    
+
     <h2>Elokuvat</h2>
     <ul>
         <li ng-repeat="movie in movies">
             <strong><a ng-href="http://www.imdb.com/title/{{movie.imdbID}}">{{movie.Title}}</a> ({{movie.Year}})</strong> 
         </li>
     </ul>
+
+    <div id="todo-footer">
+        <span ng-pluralize count="count" when="{ '-1': '', '0': 'Hakusanalla ei löytynyt elokuvia', 'one': 'Hakusanalla löytyi 1 elokuva', 'other': 'Hakusanalla löytyi {} elokuva' }"></span>
+    </div>
 </div>
