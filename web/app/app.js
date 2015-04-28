@@ -3,28 +3,57 @@ var ImApp = angular.module('ImApp', ['firebase', 'ngRoute']);
 
 
 ImApp.config(function ($routeProvider) {
-        $routeProvider.when('/', {
+    $routeProvider.when('/', {
         controller: 'ListController',
         templateUrl: 'app/views/list.html'
     })
             .when('/movies', {
                 controller: 'ListController',
-                templateUrl: 'app/views/list.html'
+                templateUrl: 'app/views/list.html',
+                resolve: {
+                    currentAuth: function (AuthenticationService) {
+                        return AuthenticationService.checkLoggedIn();
+                    }
+                }
             }).when('/movies/new', {
-                controller: 'NewController',
-                templateUrl: 'app/views/new.html'
-            }).when('/movies/:id', {
-                controller: 'DetailsController',
-                templateUrl: 'app/views/details.html'
-            }).when('/movies/:id/edit', {
-                controller: 'EditController',
-                templateUrl: 'app/views/edit.html'
-            }).when('/find', {
-                controller: 'ApiController',
-                templateUrl: 'app/views/find.html'
-            });
+        controller: 'NewController',
+        templateUrl: 'app/views/new.html',
+        resolve: {
+            currentAuth: function (AuthenticationService) {
+                return AuthenticationService.checkLoggedIn();
+            }
+        }
+    }).when('/movies/:id', {
+        controller: 'DetailsController',
+        templateUrl: 'app/views/details.html',
+        resolve: {
+            currentAuth: function (AuthenticationService) {
+                return AuthenticationService.checkLoggedIn();
+            }
+        }
+    }).when('/movies/:id/edit', {
+        controller: 'EditController',
+        templateUrl: 'app/views/edit.html',
+        resolve: {
+            currentAuth: function (AuthenticationService) {
+                return AuthenticationService.checkLoggedIn();
+            }
+        }
+    }).when('/find', {
+        controller: 'ApiController',
+        templateUrl: 'app/views/find.html'
+    });
 });
 
-ImApp.config(['$httpProvider', function($httpProvider) {
-  delete $httpProvider.defaults.headers.common["X-Requested-With"]
-}]);
+ImApp.config(['$httpProvider', function ($httpProvider) {
+        delete $httpProvider.defaults.headers.common["X-Requested-With"]
+    }]);
+
+
+ImApp.run(function(AuthenticationService, $rootScope){
+  $rootScope.logOut = function(){
+    AuthenticationService.logUserOut();
+  };
+
+  $rootScope.userLoggedIn = AuthenticationService.getUserLoggedIn();
+});

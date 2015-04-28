@@ -8,6 +8,7 @@
     </head>
     <body ng-app="ImApp">
         <a href="#">Etusivu</a> <a href="#/movies/new">Uusi</a> <a href="#/find">Etsi</a>
+        <button ng-click="logOut()" ng-if="userLoggedIn">Kirjaudu ulos</button>
         <div ng-view></div>
 
         <!-- Hyödyllisiä kirjastoja -->
@@ -20,10 +21,12 @@
         <script src="app/app.js"></script>  
         <script src="app/services/firebase_service.js"></script>
         <script src="app/services/api_service.js"></script>
+        <script src="app/services/authentication_service.js"></script>
         <script src="app/controllers/list_controller.js"></script>
         <script src="app/controllers/new_controller.js"></script>
         <script src="app/controllers/edit_controller.js"></script>
         <script src="app/controllers/details_controller.js"></script>
         <script src="app/controllers/api_controller.js"></script>
+        <script src="app/controllers/user_controller.js"></script>
     </body>
 </html>
