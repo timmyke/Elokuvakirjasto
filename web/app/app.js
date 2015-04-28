@@ -4,15 +4,15 @@ var ImApp = angular.module('ImApp', ['firebase', 'ngRoute']);
 
 ImApp.config(function ($routeProvider) {
         $routeProvider.when('/', {
-        controller: 'MoviesController',
-        templateUrl: 'app/views/movies.html'
+        controller: 'ListController',
+        templateUrl: 'app/views/list.html'
     })
             .when('/movies', {
-                controller: 'MoviesController',
-                templateUrl: 'app/views/movies.html'
+                controller: 'ListController',
+                templateUrl: 'app/views/list.html'
             }).when('/movies/new', {
-                controller: 'NewMovieController',
-                templateUrl: 'app/views/new_movie.html'
+                controller: 'NewController',
+                templateUrl: 'app/views/new.html'
             }).when('/movies/:id', {
                 controller: 'DetailsController',
                 templateUrl: 'app/views/details.html'

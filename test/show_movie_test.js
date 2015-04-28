@@ -1,49 +1,66 @@
-describe('Show movie', function(){
-	var controller, scope;
+describe('Show movie', function () {
+    var controller, scope;
 
-	var FirebaseServiceMock, RouteParamsMock;
+    var FirebaseServiceMock, RouteParamsMock;
 
-  	beforeEach(function(){
-  		// Lisää moduulisi nimi tähän
-    	module('MyAwesomeModule');
+    beforeEach(function () {
+        // Lisää moduulisi nimi tähän
+        module('ImApp');
 
-    	FirebaseServiceMock = (function(){
-			return {
-				// Toteuta FirebaseServicen mockatut metodit tähän
-			}
-		})();
+        FirebaseServiceMock = (function () {
+            var movie = {title: 'Joku leffa',
+                director: 'Kalle Ilves',
+                date: 2015,
+                description: 'Mahtava leffa!'};
 
-		RouteParamsMock = (function(){
-			return {
-				// Toteuta mockattu $routeParams-muuttuja tähän
-			}
-		});
+            return {
+                getMovie: function (id, done) {
+                    //if (id == 'abc123') {
+                    done(movie);
+                    //}
+                },
+                save: function (moov) {
+                    movie = moov;
+                },
+                get: function () {
+                    return movie;
+                }
+            }
+        })();
 
-		// Lisää vakoilijat
-	    // spyOn(FirebaseServiceMock, 'jokuFunktio').and.callThrough();
+        RouteParamsMock = (function () {
+            return {
+                id: 'abc123'
+            }
+        });
 
-    	// Injektoi toteuttamasi kontrolleri tähän
-	    inject(function($controller, $rootScope) {
-	      scope = $rootScope.$new();
-	      // Muista vaihtaa oikea kontrollerin nimi!
-	      controller = $controller('MyAwesomeController', {
-	        $scope: scope,
-	        FirebaseService: FirebaseServiceMock,
-	       	$routePrams: RouteParamsMock
-	      });
-	    });
-  	});
+        // Lisää vakoilijat
+        // spyOn(FirebaseServiceMock, 'jokuFunktio').and.callThrough();
+        spyOn(FirebaseServiceMock, 'getMovie').and.callThrough();
 
-  	/*
-  	* Testaa alla esitettyjä toimintoja kontrollerissasi
-  	*/
+        // Injektoi toteuttamasi kontrolleri tähän
+        inject(function ($controller, $rootScope) {
+            scope = $rootScope.$new();
+            // Muista vaihtaa oikea kontrollerin nimi!
+            controller = $controller('DetailsController', {
+                $scope: scope,
+                FirebaseService: FirebaseServiceMock,
+                $routePrams: RouteParamsMock
+            });
+        });
+    });
 
-  	/* 
-  	* Testaa, että Firebasesta (mockilta) saatu elokuva löytyy kontrollerista.
-  	* Testaa myös, että Firebasea käyttävästä palvelusta kutsutaan oikeaa funktiota
-  	* käyttämällä toBeCalled-oletusta.
-	*/
-	it('should show current movie from Firebase', function(){
-		expect(true).toBe(false);
-	});
+    /*
+     * Testaa alla esitettyjä toimintoja kontrollerissasi
+     */
+
+    /* 
+     * Testaa, että Firebasesta (mockilta) saatu elokuva löytyy kontrollerista.
+     * Testaa myös, että Firebasea käyttävästä palvelusta kutsutaan oikeaa funktiota
+     * käyttämällä toBeCalled-oletusta.
+     */
+    it('should show current movie from Firebase', function () {
+        expect(FirebaseServiceMock.getMovie).toHaveBeenCalled();
+        expect(scope.movie.title).toBe('Joku leffa');
+    });
 });
