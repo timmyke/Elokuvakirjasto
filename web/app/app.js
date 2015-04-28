@@ -14,7 +14,10 @@ ImApp.config(function ($routeProvider) {
                 controller: 'NewMovieController',
                 templateUrl: 'app/views/new_movie.html'
             }).when('/movies/:id', {
+                controller: 'DetailsController',
+                templateUrl: 'app/views/details.html'
+            }).when('/movies/:id/edit', {
                 controller: 'EditController',
-                templateUrl: 'app/views/new_movie.html'
+                templateUrl: 'app/views/edit.html'
             });
 });

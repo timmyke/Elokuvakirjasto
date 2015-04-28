@@ -1,0 +1,9 @@
+<div ng-controller="DetailsController">
+    <ul>
+        <li><strong>{{movie.title}}</strong></li>
+        <li>{{movie.director}}</li>
+        <li>{{formatDate(movie.date) |  date:"dd/MM/yyyy" }} </li>
+        <li>{{movie.description}}</li>
+        <li><a ng-href="#/movies/{{movie.$id}}/edit">Muokkaa</a></li>
+    </ul>
+</div>

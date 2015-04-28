@@ -1,10 +1,10 @@
-<div ng-controller="NewMovieController">
+<div ng-controller="EditController">
     <form name="form">
         <input type="text" placeholder="Nimi" ng-model="movie.title" ng-required="true">
         <input type="text" placeholder="Ohjaaja" ng-model="movie.director" ng-required="true">
-        <input type="date" placeholder="Julkaisuvuosi" ng-model="movie.date" ng-required="true" ng-minlength="5" ng-pattern="/(\d{1,2})\.(\d{1,2})\.(\d{2,4})/">
+        <input type="date" placeholder="Julkaisuvuosi" ng-model="movie.date" ng-required="true">
         <input type="text" placeholder="Kuvaus" ng-model="movie.description" ng-required="true">
-        <button ng-click="addMovie()" ng-disabled="form.$invalid">Tallenna</button>
+        <button ng-click="save()" ng-disabled="form.$invalid">Tallenna</button>
 <!--        <div ng-show="form.title.$invalid && title.phoneNumber.$dirty">
         Nimi
       </div>-->
