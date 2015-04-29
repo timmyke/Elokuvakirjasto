@@ -1,9 +1,13 @@
 <div ng-controller="DetailsController">
+    <h1>{{movie.title}}</h1>
     <ul>
-        <li><strong>{{movie.title}}</strong></li>
-        <li>{{movie.director}}</li>
-        <li>{{formatDate(movie.date) |  date:"dd/MM/yyyy" }} </li>
-        <li>{{movie.description}}</li>
-        <li><a ng-href="#/movies/{{movie.$id}}/edit">Muokkaa</a></li>
+
+        <li><strong>Ohjaaja:</strong>  {{movie.director}}</li>
+        <li><strong>Julkaisuvuosi:</strong> {{formatDate(movie.date) | date:"dd/MM/yyyy"}} </li>
+
     </ul>
+
+    {{movie.description}}
+    <br>
+    <a ng-href="#/movies/{{movie.$id}}/edit">Muokkaa</a>
 </div>

@@ -1,24 +1,33 @@
 <div ng-controller="ApiController">
 
-    <h2>Filtterit</h2>
-    <p>
-        <label>Nimi</label>
-        <input type="text" ng-model="search.name" placeholder="Nimi">
-    </p>
-    <p>
-        <label>Julkaisuvuosi</label>
-        <input type="text" ng-model="search.year" placeholder="Julkaisuvuosi">
-    </p>
-    <button ng-click="doSearch()">Hae</button>
-
-    <h2>Elokuvat</h2>
-    <ul>
-        <li ng-repeat="movie in movies">
-            <strong><a ng-href="http://www.imdb.com/title/{{movie.imdbID}}">{{movie.Title}}</a> ({{movie.Year}})</strong> 
-        </li>
-    </ul>
-
-    <div id="todo-footer">
-        <span ng-pluralize count="count" when="{ '-1': '', '0': 'Hakusanalla ei löytynyt elokuvia', 'one': 'Hakusanalla löytyi 1 elokuva', 'other': 'Hakusanalla löytyi {} elokuva' }"></span>
+    <h2>Hae elokuvia</h2>
+    <div class="form-group">
+        <label for="name">Nimi</label>
+        <input type="text" placeholder="Nimi" ng-model="search.name" ng-required="true" class="form-control" id="name" >
     </div>
+    <div class="form-group">
+        <label for="year">Julkaisuvuosi</label>
+        <input type="text" placeholder="Julkaisuvuosi" ng-model="search.year" ng-required="true" class="form-control" id="year" >
+    </div>
+
+    
+    <button ng-click="doSearch()" class="btn btn-primary">Hae</button>
+    
+    
+    <h3><span ng-pluralize count="count" when="{ '-1': '', '0': 'Hakusanalla ei löytynyt elokuvia', 'one': 'Hakusanalla löytyi 1 elokuva', 'other': 'Hakusanalla löytyi {} elokuva' }"></span></h3>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Julkaisuvuosi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="movie in movies">
+                <td><a ng-href="http://www.imdb.com/title/{{movie.imdbID}}">{{movie.Title}}</a></td>
+                <td>{{movie.Year}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

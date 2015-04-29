@@ -1,17 +1,27 @@
 <div ng-controller="UserController">
+    <form name="form">
+        <h1>Kirjaudu sisään</h1>
+        <div class="form-group">
+            <label for="email">Sähköpostiosoite</label>
+            <input type="text" id="email" placeholder="Email" ng-model="email" ng-required="true" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="password">Salasana</label>
+            <input type="text" id="password" placeholder="Salasana" ng-model="password" ng-required="true" class="form-control" >
+        </div>
+        <button ng-click="save" ng-disabled="form.$invalid" class="btn btn-primary">Tallenna</button>
+    </form>
     
     <form name="form">
-        <h3>Loggaa ineen</h3>
-        <input type="text" placeholder="Email" ng-model="email" ng-required="true">
-        <input type="password" placeholder="Salasana" ng-model="password" ng-required="true">
-        <button ng-click="logIn()" ng-disabled="form.$invalid">Login</button>
-        <p>{{message}}</p>
-    </form>
-    <h3>Ei tunnareita? Tee uudet</h3>
-    <form name="new">
-        <input type="text" placeholder="Email" ng-model="newEmail" ng-required="true">
-        <input type="password" placeholder="Salasana" ng-model="newPassword" ng-required="true">
-        <button ng-click="register()" ng-disabled="new .$invalid">Create</button>
-        <p>{{message}}</p>
+        <h1>Rekisteröidy</h1>
+        <div class="form-group">
+            <label for="email">Sähköpostiosoite</label>
+            <input type="text" id="email" placeholder="Email" ng-model="newEmail" ng-required="true" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="password">Salasana</label>
+            <input type="text" id="password" placeholder="Salasana" ng-model="newPassword" ng-required="true" class="form-control" >
+        </div>
+        <button ng-click="save" ng-disabled="form.$invalid" class="btn btn-primary">Tallenna</button>
     </form>
 </div>

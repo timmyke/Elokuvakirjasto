@@ -4,12 +4,35 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="bootstrap-3.3.2-dist/css/bootstrap.min.css">
         <title>Elokuvakirjasto</title>
     </head>
     <body ng-app="ImApp">
-        <a href="#">Etusivu</a> <a href="#/movies/new">Uusi</a> <a href="#/find">Etsi</a>
-        <button ng-click="logOut()" ng-if="userLoggedIn">Kirjaudu ulos</button>
-        <a href="#/login" ng-if="!userLoggedIn">Kirjaudu</a>
+
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Elokuvia</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Elokuvat</a></li>
+                        <li><a href="#/movies/new">Uusi</a></li>
+                        <li><a href="#/find">Etsi</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="#/login" ng-if="!userLoggedIn">Kirjaudu</a><button ng-click="logOut()" ng-if="userLoggedIn">Kirjaudu ulos</button></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+
+
+
+
         <div ng-view></div>
 
         <!-- Hyödyllisiä kirjastoja -->

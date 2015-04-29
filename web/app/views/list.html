@@ -1,10 +1,21 @@
 <div ng-controller="ListController">
-    <ul ng-repeat="movie in movies">
-    <li>
-        <strong><a ng-href="#/movies/{{movie.$id}}" >{{movie.title}}</a> <a href ng-click="delete(movie)">Poista</a></strong> 
-        <p>
-            {{movie.description}}
-        </p>
-    </li>
-</ul>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Ohjaaja</th>
+                <th>Julkaisuvuosi</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="movie in movies">
+                <td><a ng-href="#/movies/{{movie.$id}}" >{{movie.title}}</a></td>
+                <td>{{movie.director}}</td>
+                <td>{{movie.date}}</td>
+                <td><a href ng-click="delete(movie)" class="btn btn-danger" ng-disabled="!userLoggedIn">Poista</a></td>
+
+            </tr>
+        </tbody>
+    </table>
 </div>
