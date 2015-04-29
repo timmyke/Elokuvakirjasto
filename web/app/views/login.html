@@ -1,0 +1,17 @@
+<div ng-controller="UserController">
+    
+    <form name="form">
+        <h3>Loggaa ineen</h3>
+        <input type="text" placeholder="Email" ng-model="email" ng-required="true">
+        <input type="password" placeholder="Salasana" ng-model="password" ng-required="true">
+        <button ng-click="logIn()" ng-disabled="form.$invalid">Login</button>
+        <p>{{message}}</p>
+    </form>
+    <h3>Ei tunnareita? Tee uudet</h3>
+    <form name="new">
+        <input type="text" placeholder="Email" ng-model="newEmail" ng-required="true">
+        <input type="password" placeholder="Salasana" ng-model="newPassword" ng-required="true">
+        <button ng-click="register()" ng-disabled="new .$invalid">Create</button>
+        <p>{{message}}</p>
+    </form>
+</div>

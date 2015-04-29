@@ -9,6 +9,7 @@
     <body ng-app="ImApp">
         <a href="#">Etusivu</a> <a href="#/movies/new">Uusi</a> <a href="#/find">Etsi</a>
         <button ng-click="logOut()" ng-if="userLoggedIn">Kirjaudu ulos</button>
+        <a href="#/login" ng-if="!userLoggedIn">Kirjaudu</a>
         <div ng-view></div>
 
         <!-- Hyödyllisiä kirjastoja -->

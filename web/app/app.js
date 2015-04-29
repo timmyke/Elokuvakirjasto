@@ -42,6 +42,10 @@ ImApp.config(function ($routeProvider) {
     }).when('/find', {
         controller: 'ApiController',
         templateUrl: 'app/views/find.html'
+    })
+    .when('/login', {
+        controller: 'UserController',
+        templateUrl: 'app/views/login.html'
     });
 });
 
